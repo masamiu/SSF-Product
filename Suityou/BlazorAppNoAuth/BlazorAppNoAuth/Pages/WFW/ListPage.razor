@@ -1,0 +1,61 @@
+﻿@page "/list/{DataID}"
+@using Suityou.Framework.Web.DataModel;
+
+<PageTitle>List</PageTitle>
+
+<div id="header">
+    <h2>@dataName</h2>
+</div>
+
+<div id="button_area">
+    <button class="btn btn-primary" @onclick="@(s => NaviButtionClick("add", "0"))">新規作成</button>
+</div>
+
+<div id="main_area">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>操作</th>
+                @foreach (DataColumn col in dtTargetData.Columns)
+                {
+                    <th>@col.ColumnName</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow dr in dtTargetData.Rows)
+            {
+                targetId = string.Empty;
+            
+                @foreach (ColumnDefinition colDef in mainTableDef.Columns)
+                {
+                    if (colDef.IsPrimaryKey)
+                    {
+                        if (targetId.Equals(string.Empty))
+                        {
+                            targetId += dr[colDef.ColumnName].ToString();
+                        }
+                        else
+                        {
+                            targetId += string.Format("|{0}", dr[colDef.ColumnName].ToString());
+                        }
+                    }
+                }
+
+                <tr>
+                    <td>
+                        <button class="btn btn-primary" @onclick="@(s => NaviButtionClick("detail", targetId))">詳細</button>
+                        <button class="btn btn-primary" @onclick="@(s => NaviButtionClick("mod", targetId))">編集</button>
+                        <button class="btn btn-primary" @onclick="@(s => NaviButtionClick("del", targetId))">削除</button>
+                    </td>
+                    @foreach (DataColumn col in dtTargetData.Columns)
+                    {
+                        <td>@dr[col.ColumnName].ToString()</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+

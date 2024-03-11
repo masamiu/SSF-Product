@@ -1,0 +1,116 @@
+﻿@using Suityou.Framework.Web.DataModel;
+@using Suityou.Framework.Web.Common;
+@using Suityou.Framework.Web.DataManager;
+@using System.Security.Claims;
+
+<table class="table">
+    @foreach (ColumnDefinition colDef in mainTableDef.Columns)
+    {
+        columValue = (drTargetData == null) ? string.Empty : drTargetData[colDef.ColumnName].ToString();
+        <tr>
+            <th>@colDef.ColumnName</th>
+            @if (colDef.ExtAttrs.IsEditable)
+            {
+                <td>
+                    <input id="@colDef.ColumnName" type="text" value="@manageData[colDef.ColumnName]" />
+                </td>
+            }
+            else
+            {
+                <td>@columValue</td>
+            }
+        </tr>
+    }
+</table>
+
+@code {
+    [Parameter]
+    public string? DataID { get; set; }
+    [Parameter]
+    public string? DataKey { get; set; }
+    [Parameter]
+    public ClaimsPrincipal? LoginUser { get; set; }
+
+    [Inject]
+    public IConfiguration configuration { get; set; }
+    [Inject]
+    public AuthenticationStateProvider authenticationStateProvider { get; set; }
+
+    NormalDataManager dm;
+    public string dataId;
+    public string datakey;
+    public string dataName;
+    public string appSettingFile;
+    public string dataDefinitionFile;
+    public string pageDefinitionFile;
+
+    // DBから取得した内容を格納する領域
+    public DataRow drTargetData;
+    public DataSet dsSubTable;
+
+    private ClaimsPrincipal loginUser;
+
+    // 画面の内容を管理する領域
+    public Dictionary<string, string> manageData = new Dictionary<string, string>();
+
+    private TableDefinition mainTableDef;
+    private string columValue;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // パラメータ取得
+        if (DataID != null)
+        {
+            dataId = DataID;
+        }
+        if (DataKey != null)
+        {
+            datakey = DataKey;
+        }
+        if (LoginUser != null)
+        {
+            loginUser = LoginUser;
+        }
+
+        appSettingFile = configuration["CustomSetting:AppSettingFile"];
+        dataDefinitionFile = configuration["CustomSetting:DataDefinitionFile"];
+        pageDefinitionFile = configuration["CustomSetting:PageDefinitionFIle"];
+
+        dm = new NormalDataManager(appSettingFile, dataDefinitionFile, dataId, loginUser);
+
+        dataName = dm.DataName;
+        mainTableDef = dm.GetDataInformation().MainTable;
+
+        // 画面データ管理領域を作成
+        foreach (ColumnDefinition colDef in mainTableDef.Columns)
+        {
+            manageData.Add(colDef.ColumnName, string.Empty);
+        }
+
+        if (datakey != null)
+        {
+            Dictionary<string, object> filterDic = new Dictionary<string, object>();
+            string[] keyArr = datakey.Split("|");
+            int keySeq = 0;
+            foreach (ColumnDefinition colDef in mainTableDef.Columns)
+            {
+                if (colDef.IsPrimaryKey)
+                {
+                    filterDic.Add(colDef.ColumnName, keyArr[keySeq]);
+                    keySeq++;
+                }
+            }
+            DataSet dsData = dm.GetData(filterDic);
+            drTargetData = dsData.Tables[0].Rows[0];
+
+            // 取得した内容を画面データの初期値として設定
+            foreach (ColumnDefinition colDef in mainTableDef.Columns)
+            {
+                manageData[colDef.ColumnName] = drTargetData[colDef.ColumnName].ToString();
+            }
+        }
+
+        // サブテーブルのデータをすべて取得
+        dsSubTable = dm.GetAllSubData();
+    }
+}

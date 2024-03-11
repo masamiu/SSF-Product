@@ -1,0 +1,32 @@
+﻿@page "/detail2/{DataID}/{DataKey}"
+@using System.Reflection;
+@using Suityou.Framework.Web.DataModel;
+@using Suityou.Framework.Web.PageUtil;
+
+<PageTitle>Detail</PageTitle>
+
+<div id="header" class="title">
+    <h2>@dataName @title</h2>
+</div>
+
+<div id="button_area">
+    <button class="btn btn-primary" @onclick="@(s => NaviButtonClick("mod", datakey))">@btnEdit</button>
+    <button class="btn btn-primary" @onclick="@(s => NaviButtonClick("del", datakey))">@btnDelete</button>
+    <button class="btn btn-normal" @onclick="@(s => NaviButtonClick("list", "0"))">@btnBack</button>
+</div>
+
+<br />
+
+<div id="main_area">
+    <table class="table-sheet">
+        @foreach (ColumnDefinition colDef in mainTableDef.Columns)
+        {
+            PropertyInfo propInfo = modelType.GetProperty(colDef.ColumnName);
+            var propValue = propInfo.GetValue(model);
+            <tr>
+                <th>@(colDef.ExtAttrs.DisplayName == null ? colDef.ColumnName : colDef.ExtAttrs.DisplayName)</th>
+                <td>@PageDisplayManager.GetDisplayValue(colDef, dsSubTableData, propValue.ToString())</td>
+            </tr>
+        }
+    </table>
+</div>

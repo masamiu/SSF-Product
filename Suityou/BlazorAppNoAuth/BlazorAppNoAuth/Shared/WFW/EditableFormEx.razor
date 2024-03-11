@@ -1,0 +1,104 @@
+﻿@using System.Reflection;
+@using Suityou.Framework.Web.Common;
+@using Suityou.Framework.Web.DataModel;
+
+<EditForm EditContext="@editContext" OnValidSubmit="SubmitForm">
+    <table class="table-sheet">
+    @foreach (var pageItem in pageForm.FormItems)
+    {
+        <tr>
+            <th>@pageControlDic[pageItem.Name].DisplayName</th>
+            @if (pageControlDic[pageItem.Name].IsPrimaryKey && !isNew) {
+                <td>@pageItem.Value</td>
+            }
+            else if (pageControlDic[pageItem.Name].IsEditable) {
+                // 外部参照設定が定義されている場合
+                if (pageControlDic[pageItem.Name].IsReference) {
+                    if (pageControlDic[pageItem.Name].IsParentKeyColumn) {
+                        <td>
+                            <InputSelect @bind-Value="@pageItem.StringValue" @oninput="e => OnInputReferenceKeyValue(e, pageItem.Name)" TOption="string">
+                            @foreach (DataRow drSelect in pageControlDic[pageItem.Name].ReferenceData.Rows)
+                            {
+                                <Option value="@drSelect[pageControlDic[pageItem.Name].RefValueColumn]">@drSelect[pageControlDic[pageItem.Name].RefCaptionColumn]</Option>
+                            }
+                            </InputSelect>
+                        </td>
+                    }
+                    else {
+                        <td>
+                            <InputSelect @bind-Value="@pageItem.StringValue" TOption="string" >
+                            @foreach (DataRow drSelect in pageControlDic[pageItem.Name].ReferenceData.Rows)
+                            {
+                                <Option value="@drSelect[pageControlDic[pageItem.Name].RefValueColumn]">@drSelect[pageControlDic[pageItem.Name].RefCaptionColumn]</Option>
+                            }
+                            </InputSelect>
+                        </td>
+                    }
+                }
+                // 選択肢設定が定義されている場合
+                else if (pageControlDic[pageItem.Name].IsSelectValue) {
+                    if (pageControlDic[pageItem.Name].SelectType.Equals("Select"))
+                    {
+                        <td>
+                            <InputSelect class="selectbox" @bind-Value="@pageItem.StringValue" TOption="string">
+                                @foreach (string selValKey in pageControlDic[pageItem.Name].SelectValueDic.Keys)
+                                {
+                                    <Option value="@selValKey">@pageControlDic[pageItem.Name].SelectValueDic[selValKey]</Option>
+                                }
+                            </InputSelect>
+                        </td>
+                    }
+                    else if (pageControlDic[pageItem.Name].SelectType.Equals("Radio"))
+                    {
+                        <td>
+                            <FluentRadioGroup Name="@pageItem.Name" @bind-Value="@pageItem.StringValue">
+                                @foreach (string selValKey in pageControlDic[pageItem.Name].SelectValueDic.Keys)
+                                {
+                                    <FluentRadio Name="@pageItem.Name" Value="@selValKey">
+                                        @pageControlDic[pageItem.Name].SelectValueDic[selValKey]
+                                    </FluentRadio>
+                                }
+                            </FluentRadioGroup>
+                        </td>
+                    }
+                    else if (pageControlDic[pageItem.Name].SelectType.Equals("CheckBox"))
+                    {
+                        <td>
+                            @foreach (string selValKey in pageControlDic[pageItem.Name].SelectValueDic.Keys)
+                            {
+                                <FluentCheckbox Name="@pageItem.Name" @bind-Value="@pageItem.BoolValue">
+                                    @pageControlDic[pageItem.Name].SelectValueDic[selValKey]
+                                </FluentCheckbox>
+                            }
+                        </td>
+                    }
+                }
+                else if (pageControlDic[pageItem.Name].ColumnType.Equals(SuityouWFWConst.COLUMN_TYPE_DATETIME))
+                {
+                    <td>
+                        <FluentDatePicker @bind-Value="@pageItem.DateTimeValue" />
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <FluentTextField class="textbox" @bind-Value="@pageItem.StringValue" />
+                        <ValidationMessage For="() => pageItem.Value" />
+                    </td>
+                }
+            }
+            else
+            {
+                if (isNew && (pageControlDic[pageItem.Name].IsNewTimeStamp || pageControlDic[pageItem.Name].IsUpdateTimeStamp)) {
+                    <td></td>
+                }
+                else {
+                    <td>@pageItem.Value</td>
+                }
+            }
+        </tr>
+    }
+    </table>
+
+    <button class="btn btn-primary" type="submit">@buttonUpdate</button>
+</EditForm>

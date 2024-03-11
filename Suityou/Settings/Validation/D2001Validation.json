@@ -1,0 +1,90 @@
+{
+    "ValidationInformation" : {
+        "DataID" : "D2001",
+        "DataName" : "User",
+        "Columns" : [
+            {
+                "ColumnName" : "USER_ID",
+                "Validations" : [
+                    {
+                        "Type" : "Required"
+                    },
+                    {
+                        "Type" : "StringLength",
+                        "Length" : 8
+                    }
+                ]
+            },
+            {
+                "ColumnName" : "FIRST_NAME_EN",
+                "Validations" : [
+                    {
+                        "Type" : "Required"
+                    },
+                    {
+                        "Type" : "StringLength",
+                        "Length" : 15
+                    }
+                ]
+            },
+            {
+                "ColumnName" : "LAST_NAME_EN",
+                "Validations" : [
+                    {
+                        "Type" : "Required"
+                    },
+                    {
+                        "Type" : "StringLength",
+                        "Length" : 15
+                    }
+                ]
+            },
+            {
+                "ColumnName" : "FIRST_NAME_LCL",
+                "Validations" : [
+                    {
+                        "Type" : "StringLength",
+                        "Length" : 30
+                    }
+                ]
+            },
+            {
+                "ColumnName" : "LAST_NAME_LCL",
+                "Validations" : [
+                    {
+                        "Type" : "StringLength",
+                        "Length" : 30
+                    }
+                ]
+            },
+            {
+                "ColumnName" : "COMPANY_CODE",
+                "Validations" : [
+                    {
+                        "Type" : "Required"
+                    }
+                ]
+            },
+            {
+                "ColumnName" : "ORGANIZATION_CODE",
+                "Validations" : [
+                    {
+                        "Type" : "Required"
+                    }
+                ]
+            },
+            {
+                "ColumnName" : "RETIRE_FLAG",
+                "Validations" : [
+                    {
+                        "Type" : "Required"
+                    },
+                    {
+                        "Type" : "SelectValue",
+                        "Values" : "0,1"
+                    }
+                ]
+            }
+        ]
+    }
+}

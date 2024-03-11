@@ -1,0 +1,100 @@
+{
+    "DataInformation" : {
+        "DataID" : "D1003",
+        "DataName" : "カラムテスト",
+        "MainTable" : {
+            "TableName" : "T_COLUMN_TEST",
+            "Columns" : [
+                {
+                    "ColumnName" : "COLUMN_ID",
+                    "ColumnType" : "string",
+                    "Length" : 4,
+                    "IsPrimaryKey" : true,
+                    "IsNullable" : false,
+                    "ExtAttrs" : {
+                        "DisplayName" : "ID",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true
+                    }
+                },
+                {
+                    "ColumnName" : "COLUMN_DECIMAL",
+                    "ColumnType" : "decimal",
+                    "Accuracy" : "10,3",
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : true,
+                    "ExtAttrs" : {
+                        "DisplayName" : "Decimal",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true
+                    }
+                },
+                {
+                    "ColumnName" : "COLUMN_NUMERIC",
+                    "ColumnType" : "numeric",
+                    "Accuracy" : "10,3",
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : true,
+                    "ExtAttrs" : {
+                        "DisplayName" : "Numeric",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true
+                    }
+                },
+                {
+                    "ColumnName" : "COLUMN_FLOAT",
+                    "ColumnType" : "double",
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : true,
+                    "ExtAttrs" : {
+                        "DisplayName" : "Double",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true
+                    }
+                },
+                {
+                    "ColumnName" : "COLUMN_CREATE_DATE",
+                    "ColumnType" : "datetime",
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : false,
+                    "ExtAttrs" : {
+                        "DisplayName" : "CREATE_DATE",
+                        "Hidden" : false,
+                        "ListHidden" : true,
+                        "IsEditable" : false,
+                        "IsNewTimeStamp" : true
+                    }
+                },
+                {
+                    "ColumnName" : "COLUMN_UPDATE_DATE",
+                    "ColumnType" : "datetime",
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : false,
+                    "ExtAttrs" : {
+                        "DisplayName" : "UPDATE_DATE",
+                        "Hidden" : false,
+                        "ListHidden" : true,
+                        "IsEditable" : false,
+                        "IsUpdateTimeStamp" : true
+                    }
+                },
+                {
+                    "ColumnName" : "COLUMN_DATETIME",
+                    "ColumnType" : "datetime",
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : true,
+                    "ExtAttrs" : {
+                        "DisplayName" : "Datetime",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true
+                    }
+                }
+            ]
+        }
+    }
+}

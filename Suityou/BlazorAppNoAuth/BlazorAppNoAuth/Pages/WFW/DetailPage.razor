@@ -1,0 +1,28 @@
+﻿@page "/detail/{DataID}/{DataKey}"
+@using Suityou.Framework.Web.DataModel;
+
+<PageTitle>Detail</PageTitle>
+
+<div id="header">
+    <h2>@dataName</h2>
+</div>
+
+<div id="button_area">
+    <button class="btn btn-primary" @onclick="@(s => NaviButtionClick("mod", datakey))">編集</button>
+    <button class="btn btn-primary" @onclick="@(s => NaviButtionClick("del", datakey))">削除</button>
+    <button class="btn btn-primary" @onclick="@(s => NaviButtionClick("list", "0"))">戻る</button>
+</div>
+
+<br />
+
+<div id="main_area">
+    <table class="table">
+        @foreach (ColumnDefinition colDef in mainTableDef.Columns)
+        {
+            <tr>
+                <th>@colDef.ColumnName</th>
+                <td>@drTargetData[colDef.ColumnName].ToString()</td>
+            </tr>
+        }
+    </table>
+</div>

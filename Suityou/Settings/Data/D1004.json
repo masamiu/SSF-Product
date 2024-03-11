@@ -1,0 +1,92 @@
+{
+    "DataInformation": {
+        "DataID": "D1004",
+        "DataName": "Place",
+        "IsReadOnly": false,
+        "UseDownload": true,
+        "UseUpload": true,
+        "NotUseSearch": true,
+        "MainTable": {
+            "TableName": "T_PLACE",
+            "Columns": [
+                {
+                    "ColumnName": "PLACE_ID",
+                    "ColumnType": "string",
+                    "Length": 4,
+                    "IsPrimaryKey": true,
+                    "IsNullable": false,
+                    "ExtAttrs": {
+                        "DisplayName": "場所ID",
+                        "Hidden": false,
+                        "ListHidden": false,
+                        "IsEditable": true,
+                        "IsNewTimeStamp": false,
+                        "IsUpdateTimeStamp": false
+                    }
+                },
+                {
+                    "ColumnName": "PLACE_NAME",
+                    "ColumnType": "string",
+                    "Length": 50,
+                    "IsPrimaryKey": false,
+                    "IsNullable": false,
+                    "ExtAttrs": {
+                        "DisplayName": "場所名",
+                        "Hidden": false,
+                        "ListHidden": false,
+                        "IsEditable": true,
+                        "IsNewTimeStamp": false,
+                        "IsUpdateTimeStamp": false
+                    }
+                },
+                {
+                    "ColumnName": "SYSTEM_USE",
+                    "ColumnType": "int",
+                    "IsPrimaryKey": false,
+                    "IsNullable": true,
+                    "ExtAttrs": {
+                        "DisplayName": "使用用途",
+                        "Hidden": false,
+                        "ListHidden": false,
+                        "IsEditable": true,
+                        "IsNewTimeStamp": false,
+                        "IsUpdateTimeStamp": false,
+                        "SelectValue": {
+                            "SelectType": "Select",
+                            "SelectValueField": "表示,選択",
+                            "SelectValue": "1,2"
+                        }
+                    }
+                },
+                {
+                    "ColumnName": "CREATE_DATE",
+                    "ColumnType": "datetime",
+                    "IsPrimaryKey": false,
+                    "IsNullable": false,
+                    "ExtAttrs": {
+                        "DisplayName": "登録日",
+                        "Hidden": false,
+                        "ListHidden": true,
+                        "IsEditable": true,
+                        "IsNewTimeStamp": true,
+                        "IsUpdateTimeStamp": false
+                    }
+                },
+                {
+                    "ColumnName": "UPDATE_DATE",
+                    "ColumnType": "datetime",
+                    "IsPrimaryKey": false,
+                    "IsNullable": false,
+                    "ExtAttrs": {
+                        "DisplayName": "更新日",
+                        "Hidden": false,
+                        "ListHidden": true,
+                        "IsEditable": true,
+                        "IsNewTimeStamp": true,
+                        "IsUpdateTimeStamp": true
+                    }
+                }
+            ]
+        }
+    }
+}

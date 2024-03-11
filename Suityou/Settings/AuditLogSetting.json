@@ -1,0 +1,9 @@
+{
+    "LogSetting" : {
+        "AuditLogType" : 1,
+        "AuditLogFolderPath" : "D:\\ITESS\\20_Product\\suityou\\AuditLog",
+        "AuditLogFileLotation" : "Daily",
+        "AuditLogFilePrefix" : "",
+        "AuditLogTableName" : ""
+    }
+}

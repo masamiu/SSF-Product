@@ -1,0 +1,20 @@
+﻿@page "/new/{DataID}"
+@using Suityou.Framework.Web.DataModel;
+
+<PageTitle>New</PageTitle>
+
+<div id="header">
+    <h2>@dataName</h2>
+</div>
+
+<div id="button_area">
+    <button class="btn btn-primary" @onclick="@(s => NaviButtionClick("list", "0"))">戻る</button>
+</div>
+
+<br />
+
+<div id="main_area">
+    <form @onsubmit="SubmitForm">
+        <EditableForm DataID="@dataId" />
+    </form>
+</div>

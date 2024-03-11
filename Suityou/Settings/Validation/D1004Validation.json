@@ -1,0 +1,57 @@
+{
+    "ValidationInformation": {
+        "DataID": "D1004",
+        "DataName": "Place",
+        "Columns": [
+            {
+                "ColumnName": "PLACE_ID",
+                "Validations": [
+                    {
+                        "Type": "Required"
+                    },
+                    {
+                        "Type": "StringLength",
+                        "Length": 4
+                    }
+                ]
+            },
+            {
+                "ColumnName": "PLACE_NAME",
+                "Validations": [
+                    {
+                        "Type": "Required"
+                    },
+                    {
+                        "Type": "StringLength",
+                        "Length": 50
+                    }
+                ]
+            },
+            {
+                "ColumnName": "SYSTEM_USE",
+                "Validations": [
+                    {
+                        "Type": "SelectValue",
+                        "Values": "1,2"
+                    }
+                ]
+            },
+            {
+                "ColumnName": "CREATE_DATE",
+                "Validations": [
+                    {
+                        "Type": "Required"
+                    }
+                ]
+            },
+            {
+                "ColumnName": "UPDATE_DATE",
+                "Validations": [
+                    {
+                        "Type": "Required"
+                    }
+                ]
+            }
+        ]
+    }
+}

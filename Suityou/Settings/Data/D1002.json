@@ -1,0 +1,114 @@
+{
+    "DataInformation" : {
+        "DataID" : "D1002",
+        "DataName" : "Organization",
+        "IsReadOnly": false,
+        "UseDownload": true,
+        "UseUpload": true,
+        "NotUseSearch": true,
+        "MainTable" : {
+            "TableName" : "T_ORGANIZATION",
+            "Columns" : [
+                {
+                    "ColumnName" : "COMPANY_CODE",
+                    "ColumnType" : "string",
+                    "Length" : 4,
+                    "IsPrimaryKey" : true,
+                    "IsNullable" : false,
+                    "ExtAttrs" : {
+                        "DisplayName" : "会社コード",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true,
+                        "ReferenceTo" : {
+                            "TableName" : "T_COMPANY",
+                            "ValueColumnName" : "COMPANY_CODE",
+                            "CaptionColumnName" : "COMPANY_NAME"
+                        }
+                    }
+                },
+                {
+                    "ColumnName" : "ORGANIZATION_CODE",
+                    "ColumnType" : "string",
+                    "Length" : 6,
+                    "IsPrimaryKey" : true,
+                    "IsNullable" : false,
+                    "ExtAttrs" : {
+                        "DisplayName" : "組織コード",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true
+                    }
+                },
+                {
+                    "ColumnName" : "ORGANIZATION_NAME",
+                    "ColumnType" : "string",
+                    "Length" : 200,
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : true,
+                    "ExtAttrs" : {
+                        "DisplayName" : "組織名",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true
+                    }
+                },
+                {
+                    "ColumnName" : "STATUS",
+                    "ColumnType" : "int",
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : false,
+                    "ExtAttrs" : {
+                        "DisplayName" : "状態",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true,
+                        "SelectValue" : {
+                            "SelectType" : "Select",
+                            "SelectValueField" : "有効,無効",
+                            "SelectValue" : "0,1"
+                        }
+                    }
+                }
+            ]
+        },
+        "SubTables" : [
+            {
+                "TableName" : "T_COMPANY",
+                "Columns" : [
+                    {
+                        "ColumnName" : "COMPANY_ID",
+                        "ColumnType" : "int",
+                        "IsPrimaryKey" : true,
+                        "IsNullable" : false
+                    },
+                    {
+                        "ColumnName" : "COMPANY_CODE",
+                        "ColumnType" : "string",
+                        "Length" : 4,
+                        "IsPrimaryKey" : false,
+                        "IsNullable" : true
+                    },
+                    {
+                        "ColumnName" : "COMPANY_NAME",
+                        "ColumnType" : "string",
+                        "Length" : 200,
+                        "IsPrimaryKey" : false,
+                        "IsNullable" : true
+                    },
+                    {
+                        "ColumnName" : "STATUS",
+                        "ColumnType" : "int",
+                        "IsPrimaryKey" : false,
+                        "IsNullable" : false
+                    }
+                ],
+                "KeyReference" : [
+                    {
+                        "ColumnName" : "COMPANY_CODE"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Suityou.Framework.Web</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SSWDatabaseService\SSWMSSQLDatabaseService\SSWMSSQLDatabaseService.csproj" />
+    <ProjectReference Include="..\SSWDatabaseService\SSWPGSQLDatabaseService\SSWPGSQLDatabaseService.csproj" />
+  </ItemGroup>
+
+</Project>

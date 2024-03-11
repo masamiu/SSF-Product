@@ -1,0 +1,12 @@
+D:\ITESS\20_Product\suityou\SSWDatabaseService\SSWMSSQLDatabaseService\bin\Debug\net6.0\SSWMSSQLDatabaseService.deps.json
+D:\ITESS\20_Product\suityou\SSWDatabaseService\SSWMSSQLDatabaseService\bin\Debug\net6.0\SSWMSSQLDatabaseService.dll
+D:\ITESS\20_Product\suityou\SSWDatabaseService\SSWMSSQLDatabaseService\bin\Debug\net6.0\SSWMSSQLDatabaseService.pdb
+D:\ITESS\20_Product\suityou\SSWDatabaseService\SSWMSSQLDatabaseService\obj\Debug\net6.0\SSWMSSQLDatabaseService.csproj.AssemblyReference.cache
+D:\ITESS\20_Product\suityou\SSWDatabaseService\SSWMSSQLDatabaseService\obj\Debug\net6.0\SSWMSSQLDatabaseService.GeneratedMSBuildEditorConfig.editorconfig
+D:\ITESS\20_Product\suityou\SSWDatabaseService\SSWMSSQLDatabaseService\obj\Debug\net6.0\SSWMSSQLDatabaseService.AssemblyInfoInputs.cache
+D:\ITESS\20_Product\suityou\SSWDatabaseService\SSWMSSQLDatabaseService\obj\Debug\net6.0\SSWMSSQLDatabaseService.AssemblyInfo.cs
+D:\ITESS\20_Product\suityou\SSWDatabaseService\SSWMSSQLDatabaseService\obj\Debug\net6.0\SSWMSSQLDatabaseService.csproj.CoreCompileInputs.cache
+D:\ITESS\20_Product\suityou\SSWDatabaseService\SSWMSSQLDatabaseService\obj\Debug\net6.0\SSWMSSQLDatabaseService.dll
+D:\ITESS\20_Product\suityou\SSWDatabaseService\SSWMSSQLDatabaseService\obj\Debug\net6.0\refint\SSWMSSQLDatabaseService.dll
+D:\ITESS\20_Product\suityou\SSWDatabaseService\SSWMSSQLDatabaseService\obj\Debug\net6.0\SSWMSSQLDatabaseService.pdb
+D:\ITESS\20_Product\suityou\SSWDatabaseService\SSWMSSQLDatabaseService\obj\Debug\net6.0\ref\SSWMSSQLDatabaseService.dll

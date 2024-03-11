@@ -1,0 +1,55 @@
+{
+    "ValidationInformation" : {
+        "DataID" : "D1001",
+        "DataName" : "Company",
+        "Columns" : [
+            {
+                "ColumnName" : "COMPANY_ID",
+                "Validations" : [
+                    {
+                        "Type" : "Required"
+                    },
+                    {
+                        "Type" : "IsInteger"
+                    }
+                ]
+            },
+            {
+                "ColumnName" : "COMPANY_CODE",
+                "Validations" : [
+                    {
+                        "Type" : "Required"
+                    },
+                    {
+                        "Type" : "StringLength",
+                        "Length" : 4
+                    }
+                ]
+            },
+            {
+                "ColumnName" : "COMPANY_NAME",
+                "Validations" : [
+                    {
+                        "Type" : "Required"
+                    },
+                    {
+                        "Type" : "StringLength",
+                        "Length" : 50
+                    }
+                ]
+            },
+            {
+                "ColumnName" : "STATUS",
+                "Validations" : [
+                    {
+                        "Type" : "Required"
+                    },
+                    {
+                        "Type" : "SelectValue",
+                        "Values" : "0,1"
+                    }
+                ]
+            }
+        ]
+    }
+}

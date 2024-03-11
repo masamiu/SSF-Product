@@ -1,0 +1,16 @@
+﻿@page "/new2/{DataID}"
+@using Suityou.Framework.Web.DataModel;
+
+<div id="header" class="title">
+    <h2>@dataName @title</h2>
+</div>
+
+<div id="button_area">
+    <button class="btn btn-normal" @onclick="@(s => NaviButtonClick("list", "0"))">@buttonBack</button>
+</div>
+
+<br />
+
+<div id="main_area">
+    <EditableFormEx DataInfo="@dataInfo" DsSubTable="@dsSubTableData" />
+</div>

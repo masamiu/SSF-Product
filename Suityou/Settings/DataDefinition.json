@@ -1,0 +1,147 @@
+{
+    "DataInformations" : [
+        {
+            "DataID" : "D1001",
+            "DataName" : "Company",
+            "MainTable" : {
+                "TableName" : "T_COMPANY",
+                "Columns" : [
+                    {
+                        "ColumnName" : "COMPANY_ID",
+                        "ColumnType" : "int",
+                        "IsPrimaryKey" : true,
+                        "IsNullable" : false,
+                        "ExtAttrs" : {
+                            "DisplayName" : "ID",
+                            "Hidden" : false,
+                            "IsEditable" : true
+                        }
+                    },
+                    {
+                        "ColumnName" : "COMPANY_CODE",
+                        "ColumnType" : "string",
+                        "Length" : 4,
+                        "IsPrimaryKey" : false,
+                        "IsNullable" : true,
+                        "ExtAttrs" : {
+                            "DisplayName" : "国コード",
+                            "Hidden" : false,
+                            "IsEditable" : true
+                        }
+                    },
+                    {
+                        "ColumnName" : "COMPANY_NAME",
+                        "ColumnType" : "string",
+                        "Length" : 200,
+                        "IsPrimaryKey" : false,
+                        "IsNullable" : true,
+                        "ExtAttrs" : {
+                            "DisplayName" : "国名",
+                            "Hidden" : false,
+                            "IsEditable" : true
+                        }
+                    },
+                    {
+                        "ColumnName" : "STATUS",
+                        "ColumnType" : "int",
+                        "IsPrimaryKey" : false,
+                        "IsNullable" : false,
+                        "ExtAttrs" : {
+                            "DisplayName" : "状態",
+                            "Hidden" : false,
+                            "IsEditable" : true
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "DataID" : "D1002",
+            "DataName" : "Organization",
+            "MainTable" : {
+                "TableName" : "T_ORGANIZATION",
+                "Columns" : [
+                    {
+                        "ColumnName" : "COMPANY_CODE",
+                        "ColumnType" : "int",
+                        "IsPrimaryKey" : true,
+                        "IsNullable" : false,
+                        "ExtAttrs" : {
+                            "DisplayName" : "国コード",
+                            "Hidden" : false,
+                            "IsEditable" : true
+                        }
+                    },
+                    {
+                        "ColumnName" : "ORGANIZATION_CODE",
+                        "ColumnType" : "string",
+                        "Length" : 4,
+                        "IsPrimaryKey" : true,
+                        "IsNullable" : false,
+                        "ExtAttrs" : {
+                            "DisplayName" : "組織コード",
+                            "Hidden" : false,
+                            "IsEditable" : true
+                        }
+                    },
+                    {
+                        "ColumnName" : "ORGANIZATION_NAME",
+                        "ColumnType" : "string",
+                        "Length" : 200,
+                        "IsPrimaryKey" : false,
+                        "IsNullable" : true,
+                        "ExtAttrs" : {
+                            "DisplayName" : "組織名",
+                            "Hidden" : false,
+                            "IsEditable" : true
+                        }
+                    },
+                    {
+                        "ColumnName" : "STATUS",
+                        "ColumnType" : "int",
+                        "IsPrimaryKey" : false,
+                        "IsNullable" : false,
+                        "ExtAttrs" : {
+                            "DisplayName" : "状態",
+                            "Hidden" : false,
+                            "IsEditable" : true
+                        }
+                    }
+                ]
+            },
+            "SubTables" : [
+                {
+                    "TableName" : "T_COMPANY",
+                    "Columns" : [
+                        {
+                            "ColumnName" : "COMPANY_ID",
+                            "ColumnType" : "int",
+                            "IsPrimaryKey" : true,
+                            "IsNullable" : false
+                        },
+                        {
+                            "ColumnName" : "COMPANY_CODE",
+                            "ColumnType" : "string",
+                            "Length" : 4,
+                            "IsPrimaryKey" : false,
+                            "IsNullable" : true
+                        },
+                        {
+                            "ColumnName" : "COMPANY_NAME",
+                            "ColumnType" : "string",
+                            "Length" : 200,
+                            "IsPrimaryKey" : false,
+                            "IsNullable" : true
+                        },
+                        {
+                            "ColumnName" : "STATUS",
+                            "ColumnType" : "int",
+                            "IsPrimaryKey" : false,
+                            "IsNullable" : false
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,69 @@
+﻿@using Suityou.Framework.Web.DataModel;
+@implements IDialogContentComponent<UploadData>
+
+@* Header *@
+<FluentDialogHeader ShowDismiss="true">
+    <FluentStack VerticalAlignment="VerticalAlignment.Center">
+        <FluentLabel Typo="Typography.PaneHeader">
+            @Dialog?.Instance.Parameters.Title
+        </FluentLabel>
+    </FluentStack>
+</FluentDialogHeader>
+@* Footer *@
+<FluentDialogFooter>
+    <button Class="@executeButtonClassValue" @onclick="@(s => UploadExecuteAsync())">@buttonExecute</button>
+    <button Class="btn btn-normal" @onclick="@(s => CloseAsync())">@buttonClose</button>
+</FluentDialogFooter>
+@* Body *@
+<FluentDialogBody>
+    <FluentRadioGroup @bind-Value=uploadType>
+        <FluentRadio Value="@("replace")">@radioUploadReplace</FluentRadio>
+        <FluentRadio Value="@("add")">@radioUploadAdd</FluentRadio>
+    </FluentRadioGroup>
+    <br />
+    <FluentInputFile Id="my-file-uploader"
+        Mode="InputFileMode.SaveToTemporaryFolder"
+        Multiple="false"
+        ShowPreview="true"
+        MaximumFileCount="1"
+        MaximumFileSize="50000000"
+        Accept="csv"
+        @bind-ProgressPercent="@progressPercent"
+        OnCompleted="@OnCompletedAsync"
+        Style="height: 150px;"
+        Class="input-file">
+
+        <div>
+            @messageInputFile
+        </div>
+    </FluentInputFile>
+    @if (Files.Any())
+    {
+        <br />
+        <h4>@messageUploaded</h4>
+        <ul>
+            @foreach (var file in Files)
+            {
+                <li>
+                    <b>@file.Name</b> 🔹
+                    @($"{Decimal.Divide(file.Size, 1024):N} KB") 🔹
+                    @file.ContentType 🔹
+                    @file.ErrorMessage
+                </li>
+            }
+        </ul>
+    }
+    @if (uploadErrorExists)
+    {
+        <br />
+        <ul>
+            @foreach (string errorMessage in uploadErrors)
+            {
+                <li style="color:red;">
+                    @errorMessage
+                </li>
+            }
+        </ul>
+    }
+</FluentDialogBody>
+

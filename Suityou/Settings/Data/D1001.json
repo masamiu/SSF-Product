@@ -1,0 +1,69 @@
+{
+    "DataInformation" : {
+        "DataID" : "D1001",
+        "DataName" : "Company",
+        "IsReadOnly": false,
+        "UseDownload": true,
+        "UseUpload": true,
+        "MainTable" : {
+            "TableName" : "T_COMPANY",
+            "Columns" : [
+                {
+                    "ColumnName" : "COMPANY_ID",
+                    "ColumnType" : "int",
+                    "IsPrimaryKey" : true,
+                    "IsNullable" : false,
+                    "ExtAttrs" : {
+                        "DisplayName" : "ID",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true
+                    }
+                },
+                {
+                    "ColumnName" : "COMPANY_CODE",
+                    "ColumnType" : "string",
+                    "Length" : 4,
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : true,
+                    "ExtAttrs" : {
+                        "DisplayName" : "会社コード",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true
+                    }
+                },
+                {
+                    "ColumnName" : "COMPANY_NAME",
+                    "ColumnType" : "string",
+                    "Length" : 200,
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : true,
+                    "ExtAttrs" : {
+                        "DisplayName" : "会社名",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true
+                    }
+                },
+                {
+                    "ColumnName" : "STATUS",
+                    "ColumnType" : "int",
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : false,
+                    "ExtAttrs" : {
+                        "DisplayName" : "状態",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true,
+                        "SelectValue" : {
+                            "SelectType" : "CheckBox",
+                            "SelectValueField" : "無効",
+                            "SelectValue" : "1"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

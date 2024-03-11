@@ -1,0 +1,8 @@
+{
+    "Setting" : {
+        "DBType" : 0,
+        "DBConnectionString" : "Server=ITESS2212PC0001\\MSSQLSERVER2019;Database=ITESS;Integrated Security=SSPI;",
+        "AuditLogSettingFilePath" : "D:\\\\ITESS\\\\20_Product\\\\suityou\\Settings\\AuditLogSetting.json",
+        "CSSStyle" : "blue"
+    }
+}

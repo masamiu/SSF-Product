@@ -1,0 +1,44 @@
+{
+    "ValidationInformation" : {
+        "DataID" : "D1003",
+        "DataName" : "カラムテスト",
+        "Columns" : [
+            {
+                "ColumnName" : "COLUMN_ID",
+                "Validations" : [
+                    {
+                        "Type" : "Required"
+                    },
+                    {
+                        "Type" : "StringLength",
+                        "Length" : 4
+                    }
+                ]
+            },
+            {
+                "ColumnName" : "COLUMN_DECIMAL",
+                "Validations" : [
+                    {
+                        "Type" : "IsDecimal"
+                    }
+                ]
+            },
+            {
+                "ColumnName" : "COLUMN_NUMERIC",
+                "Validations" : [
+                    {
+                        "Type" : "IsDecimal"
+                    }
+                ]
+            },
+            {
+                "ColumnName" : "COLUMN_FLOAT",
+                "Validations" : [
+                    {
+                        "Type" : "IsDecimal"
+                    }
+                ]
+            }
+        ]
+    }
+}

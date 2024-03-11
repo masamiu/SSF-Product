@@ -1,0 +1,56 @@
+{
+    "ValidationInformation" : {
+        "DataID" : "D1002",
+        "DataName" : "Organization",
+        "Columns" : [
+            {
+                "ColumnName" : "COMPANY_CODE",
+                "Validations" : [
+                    {
+                        "Type" : "Required"
+                    },
+                    {
+                        "Type" : "StringLength",
+                        "Length" : 4
+                    }
+                ]
+            },
+            {
+                "ColumnName" : "ORGANIZATION_CODE",
+                "Validations" : [
+                    {
+                        "Type" : "Required"
+                    },
+                    {
+                        "Type" : "StringLength",
+                        "Length" : 6
+                    }
+                ]
+            },
+            {
+                "ColumnName" : "ORGANIZATION_NAME",
+                "Validations" : [
+                    {
+                        "Type" : "Required"
+                    },
+                    {
+                        "Type" : "StringLength",
+                        "Length" : 10
+                    }
+                ]
+            },
+            {
+                "ColumnName" : "STATUS",
+                "Validations" : [
+                    {
+                        "Type" : "Required"
+                    },
+                    {
+                        "Type" : "SelectValue",
+                        "Values" : "0,1"
+                    }
+                ]
+            }
+        ]
+    }
+}

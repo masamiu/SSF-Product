@@ -1,0 +1,189 @@
+﻿@page "/list2/{DataID}"
+@using System.Reflection;
+@using Suityou.Framework.Web.DataModel;
+@using Suityou.Framework.Web.PageUtil;
+@using Suityou.Framework.Web.Common;
+
+<PageTitle>List</PageTitle>
+
+<div id="header" class="title">
+    <h2>@dataName @title</h2>
+</div>
+
+<div id="button_area">
+    @if (!isReadOnly)
+    {
+        <button class="btn btn-primary" @onclick="@(s => NaviButtonClick("add", "0"))">@buttonEntry</button>
+        if (useUpload)
+        {
+            <button class="btn btn-primary" @onclick="@(s => UploadButtonClickAsync())">@buttonUpload</button>
+        }
+    }
+    @if (useDownload && notUseSearch)
+    {
+        <button class="btn btn-primary" @onclick="@(s => DownloadButtonClickAsync())">@buttonDownload</button>
+    }
+</div>
+
+@if (!notUseSearch)
+{
+    <br />
+
+    <div id="search_area">
+        <EditForm EditContext="@editContext">
+            <FluentAccordion ActiveId="accordion-1">
+                <FluentAccordionItem Heading="@filter" Class="filter-header">
+                    <div>
+                        <table class="table-filter">
+                            @{int itemCounter = 0;}
+                            @for (int row = 0; row < searchFormRowCount; row++)
+                            {
+                                <tr>
+                                @for (int col = 0; col < searchFormColCount; col++)
+                                {
+                                    if (itemCounter + 1 <= searchItemCount) {
+                                        FormItem item = formItemArr[itemCounter];
+                                        PageControlInfomation controlInfo = pageControlDic[item.Name];
+                                        <th>@controlInfo.DisplayName</th>
+                                        @if (controlInfo.IsReference) {
+                                            if (controlInfo.IsParentKeyColumn) {
+                                                <td>
+                                                    <InputSelect class="selectbox" @bind-Value="@item.StringValue" @oninput="e => OnInputReferenceKeyValue(e, item.Name)" TOption="string">
+                                                        <Option value="">@labelFilterNotset</Option>
+                                                        @foreach (DataRow drSelect in controlInfo.ReferenceData.Rows)
+                                                        {
+                                                            <Option value="@drSelect[controlInfo.RefValueColumn]">@drSelect[controlInfo.RefCaptionColumn]</Option>
+                                                        }
+                                                    </InputSelect>
+                                                </td>
+                                            }
+                                            else {
+                                                <td>
+                                                    <InputSelect class="selectbox" @bind-Value="@item.StringValue" TOption="string">
+                                                        <Option value="">@labelFilterNotset</Option>
+                                                        @foreach (DataRow drSelect in controlInfo.ReferenceData.Rows)
+                                                        {
+                                                            <Option value="@drSelect[controlInfo.RefValueColumn]">@drSelect[controlInfo.RefCaptionColumn]</Option>
+                                                        }
+                                                    </InputSelect>
+                                                </td>
+                                            }
+                                        }
+                                        else if (controlInfo.IsSelectValue) {
+                                            if (controlInfo.SelectType.Equals("Select")) {
+                                                <td>
+                                                    <InputSelect class="selectbox" @bind-Value="@item.StringValue" TOption="string">
+                                                        <Option value="">@labelFilterNotset</Option>
+                                                        @foreach (string selValKey in controlInfo.SelectValueDic.Keys)
+                                                        {
+                                                            <Option value="@selValKey">@controlInfo.SelectValueDic[selValKey]</Option>
+                                                        }
+                                                    </InputSelect>
+                                                </td>
+                                            }
+                                            else if (controlInfo.SelectType.Equals("Radio")) {
+                                                <td>
+                                                    <FluentRadioGroup Name="@item.Name" @bind-Value="@item.StringValue">
+                                                        <FluentRadio Name="@item.Name" Value="@string.Empty">
+                                                            @labelFilterNotset
+                                                        </FluentRadio>
+                                                        @foreach (string selValKey in controlInfo.SelectValueDic.Keys)
+                                                        {
+                                                            <FluentRadio Name="@item.Name" Value="@selValKey">
+                                                                @pageControlDic[item.Name].SelectValueDic[selValKey]
+                                                            </FluentRadio>
+                                                        }
+                                                    </FluentRadioGroup>
+                                                </td>
+                                            }
+                                            else if (controlInfo.SelectType.Equals("CheckBox")) {
+                                                <td>
+                                                    <InputSelect class="selectbox" @bind-Value="@item.StringValue" TOption="string">
+                                                        <Option value="">@labelFilterNotset</Option>
+                                                        @foreach (string selValKey in controlInfo.SelectValueDic.Keys)
+                                                        {
+                                                            <Option value="@selValKey">@controlInfo.SelectValueDic[selValKey]</Option>
+                                                        }
+                                                    </InputSelect>
+                                                </td>
+                                            }
+                                        }
+                                        else if (controlInfo.ColumnType.Equals(SuityouWFWConst.COLUMN_TYPE_DATETIME)) {
+                                            <td>
+                                                <FluentDatePicker @bind-Value="@item.DateTimeValue" />
+                                            </td>
+                                        }
+                                        else {
+                                            <td>
+                                                <FluentTextField class="textbox" @bind-Value="@item.StringValue" />
+                                            </td>
+                                        }
+                                    }
+                                    else {
+                                        <th></th>
+                                        <td></td>
+                                    }
+                                    itemCounter++;
+                                }
+                                </tr>
+                            }
+                        </table>
+
+                        <div align="center">
+                            <button class="btn btn-primary" @onclick="@(s => SearchButtonClickAsync())">@buttonSearch</button>
+                        @if (useDownload)
+                        {
+                            <button class="btn btn-primary" @onclick="@(s => DownloadButtonClickAsync())">@buttonDownload</button>
+                        }
+                        </div>
+                    </div>
+                </FluentAccordionItem>
+            </FluentAccordion>
+        </EditForm>
+    </div>
+}
+
+<div id="main_area">
+    <table class="table-list">
+        <thead>
+            <tr>
+                <th>@operation</th>
+                @foreach (ColumnDefinition colDef in mainTableDef.Columns)
+                {
+                    if (colDef.ExtAttrs?.Hidden == false && colDef.ExtAttrs?.ListHidden == false )
+                    {
+                        <th>@colDispNameDic[colDef.ColumnName]</th>
+                    }
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Object model in modelList)
+            {
+                <tr>
+                    <td>
+                        @{
+                            string keyValue = string.Empty;
+                            PropertyInfo keyPropInfo = modelType.GetProperty("KEY_VALUE");
+                            keyValue = keyPropInfo.GetValue(model).ToString();
+                        }
+                        <button class="btn btn-primary" @onclick="@(s => NaviButtonClick("detail", keyPropInfo.GetValue(model).ToString()))">@buttonDetail</button>
+                        @if (!isReadOnly) {
+                            <button class="btn btn-primary" @onclick="@(s => NaviButtonClick("mod", keyPropInfo.GetValue(model).ToString()))">@buttonEdit</button>
+                            <button class="btn btn-primary" @onclick="@(s => NaviButtonClick("del", keyPropInfo.GetValue(model).ToString()))">@buttonDelete</button>
+                        }
+                    </td>
+                    @foreach (ColumnDefinition colDef in mainTableDef.Columns)
+                    {
+                        if (colDef.ExtAttrs?.Hidden == false && colDef.ExtAttrs?.ListHidden == false)
+                        {
+                            PropertyInfo propInfo = modelType.GetProperty(colDef.ColumnName);
+                            var propValue = propInfo.GetValue(model);
+                            <td>@PageDisplayManager.GetDisplayValue(colDef, dsSubTableData, propValue.ToString())</td>
+                        }
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

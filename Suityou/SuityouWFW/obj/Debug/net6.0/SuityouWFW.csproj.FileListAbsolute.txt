@@ -1,0 +1,17 @@
+D:\ITESS\20_Product\suityou\SuityouWFW\bin\Debug\net6.0\SuityouWFW.deps.json
+D:\ITESS\20_Product\suityou\SuityouWFW\bin\Debug\net6.0\SuityouWFW.dll
+D:\ITESS\20_Product\suityou\SuityouWFW\bin\Debug\net6.0\SuityouWFW.pdb
+D:\ITESS\20_Product\suityou\SuityouWFW\obj\Debug\net6.0\SuityouWFW.csproj.AssemblyReference.cache
+D:\ITESS\20_Product\suityou\SuityouWFW\obj\Debug\net6.0\SuityouWFW.GeneratedMSBuildEditorConfig.editorconfig
+D:\ITESS\20_Product\suityou\SuityouWFW\obj\Debug\net6.0\SuityouWFW.AssemblyInfoInputs.cache
+D:\ITESS\20_Product\suityou\SuityouWFW\obj\Debug\net6.0\SuityouWFW.AssemblyInfo.cs
+D:\ITESS\20_Product\suityou\SuityouWFW\obj\Debug\net6.0\SuityouWFW.csproj.CoreCompileInputs.cache
+D:\ITESS\20_Product\suityou\SuityouWFW\obj\Debug\net6.0\SuityouWFW.dll
+D:\ITESS\20_Product\suityou\SuityouWFW\obj\Debug\net6.0\refint\SuityouWFW.dll
+D:\ITESS\20_Product\suityou\SuityouWFW\obj\Debug\net6.0\SuityouWFW.pdb
+D:\ITESS\20_Product\suityou\SuityouWFW\obj\Debug\net6.0\ref\SuityouWFW.dll
+D:\ITESS\20_Product\suityou\SuityouWFW\obj\Debug\net6.0\SuityouWFW.csproj.CopyComplete
+D:\ITESS\20_Product\suityou\SuityouWFW\bin\Debug\net6.0\SSWMSSQLDatabaseService.dll
+D:\ITESS\20_Product\suityou\SuityouWFW\bin\Debug\net6.0\SSWPGSQLDatabaseService.dll
+D:\ITESS\20_Product\suityou\SuityouWFW\bin\Debug\net6.0\SSWMSSQLDatabaseService.pdb
+D:\ITESS\20_Product\suityou\SuityouWFW\bin\Debug\net6.0\SSWPGSQLDatabaseService.pdb

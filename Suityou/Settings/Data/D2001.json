@@ -1,0 +1,207 @@
+{
+    "DataInformation" : {
+        "DataID" : "D2001",
+        "DataName" : "User",
+        "MainTable" : {
+            "TableName" : "T_USER",
+            "Columns" : [
+                {
+                    "ColumnName" : "USER_ID",
+                    "ColumnType" : "string",
+                    "Length" : 8,
+                    "IsPrimaryKey" : true,
+                    "IsNullable" : false,
+                    "ExtAttrs" : {
+                        "DisplayName" : "ユーザID",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true
+                    }
+                },
+                {
+                    "ColumnName" : "FIRST_NAME_EN",
+                    "ColumnType" : "string",
+                    "Length" : 15,
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : false,
+                    "ExtAttrs" : {
+                        "DisplayName" : "英字名",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true
+                    }
+                },
+                {
+                    "ColumnName" : "LAST_NAME_EN",
+                    "ColumnType" : "string",
+                    "Length" : 15,
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : false,
+                    "ExtAttrs" : {
+                        "DisplayName" : "英字姓",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true
+                    }
+                },
+                {
+                    "ColumnName" : "FIRST_NAME_LCL",
+                    "ColumnType" : "string",
+                    "Length" : 30,
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : true,
+                    "ExtAttrs" : {
+                        "DisplayName" : "ローカル名",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true
+                    }
+                },
+                {
+                    "ColumnName" : "LAST_NAME_LCL",
+                    "ColumnType" : "string",
+                    "Length" : 30,
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : true,
+                    "ExtAttrs" : {
+                        "DisplayName" : "ローカル姓",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true
+                    }
+                },
+                {
+                    "ColumnName" : "COMPANY_CODE",
+                    "ColumnType" : "string",
+                    "Length" : 4,
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : false,
+                    "ExtAttrs" : {
+                        "DisplayName" : "会社コード",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true,
+                        "ReferenceTo" : {
+                            "TableName" : "T_COMPANY",
+                            "ValueColumnName" : "COMPANY_CODE",
+                            "CaptionColumnName" : "COMPANY_NAME"
+                        }
+                    }
+                },
+                {
+                    "ColumnName" : "ORGANIZATION_CODE",
+                    "ColumnType" : "string",
+                    "Length" : 6,
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : false,
+                    "ExtAttrs" : {
+                        "DisplayName" : "組織コード",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true,
+                        "ReferenceTo" : {
+                            "TableName" : "T_ORGANIZATION",
+                            "ValueColumnName" : "ORGANIZATION_CODE",
+                            "CaptionColumnName" : "ORGANIZATION_NAME"
+                        }
+                    }
+                },
+                {
+                    "ColumnName" : "RETIRE_FLAG",
+                    "ColumnType" : "int",
+                    "IsPrimaryKey" : false,
+                    "IsNullable" : false,
+                    "ExtAttrs" : {
+                        "DisplayName" : "退職フラグ",
+                        "Hidden" : false,
+                        "ListHidden" : false,
+                        "IsEditable" : true,
+                        "SelectValue" : {
+                            "SelectType" : "Radio",
+                            "SelectValueField" : "未退職,退職済",
+                            "SelectValue" : "0,1"
+                        }
+                    }
+                }
+            ]
+        },
+        "SubTables" : [
+            {
+                "TableName" : "T_COMPANY",
+                "Columns" : [
+                    {
+                        "ColumnName" : "COMPANY_ID",
+                        "ColumnType" : "int",
+                        "IsPrimaryKey" : true,
+                        "IsNullable" : false
+                    },
+                    {
+                        "ColumnName" : "COMPANY_CODE",
+                        "ColumnType" : "string",
+                        "Length" : 4,
+                        "IsPrimaryKey" : false,
+                        "IsNullable" : true
+                    },
+                    {
+                        "ColumnName" : "COMPANY_NAME",
+                        "ColumnType" : "string",
+                        "Length" : 200,
+                        "IsPrimaryKey" : false,
+                        "IsNullable" : true
+                    },
+                    {
+                        "ColumnName" : "STATUS",
+                        "ColumnType" : "int",
+                        "IsPrimaryKey" : false,
+                        "IsNullable" : false
+                    }
+                ],
+                "KeyReference" : [
+                    {
+                        "ColumnName" : "COMPANY_CODE"
+                    }
+                ]
+            },
+            {
+                "TableName" : "T_ORGANIZATION",
+                "Columns" : [
+                    {
+                        "ColumnName" : "COMPANY_CODE",
+                        "ColumnType" : "string",
+                        "Length" : 4,
+                        "IsPrimaryKey" : true,
+                        "IsNullable" : false
+                    },
+                    {
+                        "ColumnName" : "ORGANIZATION_CODE",
+                        "ColumnType" : "string",
+                        "Length" : 6,
+                        "IsPrimaryKey" : true,
+                        "IsNullable" : false
+                    },
+                    {
+                        "ColumnName" : "ORGANIZATION_NAME",
+                        "ColumnType" : "string",
+                        "Length" : 50,
+                        "IsPrimaryKey" : false,
+                        "IsNullable" : true
+                    },
+                    {
+                        "ColumnName" : "STATUS",
+                        "ColumnType" : "int",
+                        "IsPrimaryKey" : false,
+                        "IsNullable" : false
+                    }
+                ],
+                "KeyReference" : [
+                    {
+                        "ColumnName" : "COMPANY_CODE"
+                    },
+                    {
+                        "ColumnName" : "ORGANIZATION_CODE"
+                    }
+                ]
+            }
+        ]
+    }
+}
