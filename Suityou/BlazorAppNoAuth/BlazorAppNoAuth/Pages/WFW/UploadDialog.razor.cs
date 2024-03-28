@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.Fast.Components.FluentUI;
+using Microsoft.JSInterop;
 using Suityou.Framework.Web.Common;
 using Suityou.Framework.Web.DataManager;
 using Suityou.Framework.Web.DataModel;
@@ -128,6 +129,13 @@ namespace BlazorAppNoAuth.Pages.WFW
                     }
                 }
                 Files = Array.Empty<FluentInputFileEventArgs>();
+
+                if (!uploadErrorExists)
+                {
+                    // アップロード成功の場合はUploadDialogを閉じてリロード
+                    await Dialog.CloseAsync();
+                    await JsRuntime.InvokeVoidAsync("eval", "location.reload()");
+                }
             }
         }
 

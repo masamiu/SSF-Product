@@ -436,11 +436,13 @@ namespace Suityou.Framework.Web.DataManager
                                 }
                                 break;
                         }
+                        colSeq++;
                     }
 
                     dtResult.Rows.Add(drTarget);
                 }
             }
+            dataCount = dtResult.Rows.Count;
 
             // データが0件の場合
             if (dataCount == 0)
