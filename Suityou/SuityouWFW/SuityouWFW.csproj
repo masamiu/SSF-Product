@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SSWDatabaseService\SSWMSSQLDatabaseService\SSWMSSQLDatabaseService.csproj" />
-    <ProjectReference Include="..\SSWDatabaseService\SSWPGSQLDatabaseService\SSWPGSQLDatabaseService.csproj" />
+	  <ProjectReference Include="..\SSWDatabaseService\SSWMSSQLDatabaseService\SSWMSSQLDatabaseService.csproj" />
+	  <ProjectReference Include="..\SSWDatabaseService\SSWPGSQLDatabaseService\SSWPGSQLDatabaseService.csproj" />
   </ItemGroup>
 
 </Project>
